@@ -1,6 +1,6 @@
 {
   "name": "angularjs-todo",
-  "description": "Todo List application bu_ild with AngularJS",
+  "description": "Todo List application build with AngularJS",
   "repository": "https://github.com/Boussadia/angular-todo",
   "devDependencies": {
     "phantomjs" : "~1.9",
