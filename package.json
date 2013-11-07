@@ -1,0 +1,12 @@
+{
+  "name": "angularjs-todo",
+  "description": "Todo List application bu_ild with AngularJS",
+  "repository": "https://github.com/Boussadia/angular-todo",
+  "devDependencies": {
+    "phantomjs" : "~1.9",
+    "karma" : "~0.10",
+    "karma-junit-reporter" : "~0.1",
+    "karma-jasmine" : "~0.1",
+    "karma-ng-scenario" : "~0.1"
+  }
+}
