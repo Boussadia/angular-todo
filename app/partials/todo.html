@@ -1,7 +1,7 @@
 <!-- Ecran pour une tache -->
 
-<input type="text" ng-model="title" size="30" placeholder="Titre de la todo">
-<input type="textarea" ng-model="description" cols="30" rows="10" placeholder="Description">
+<input type="text" ng-model="title" size="30" placeholder="Titre de la todo" ng-keyup="$broadcast('todo:keyup', $event)">
+<input type="textarea" ng-model="description" cols="30" rows="10" placeholder="Description" ng-keyup="$broadcast('todo:keyup', $event)">
 <!-- On affiche un bouton différent en fonction de l'url de la page -->
 <button ng-click="addNewTodo(title, description)" ng-if="state==='new'"> Ajouter</button>
 <button ng-click="editTodo(title, description)" ng-if="state!=='new'"> Enregistrer</button>

@@ -36,8 +36,36 @@ TodoControllers.controller('MainCtrl', ['$scope', 'localStorageService',
 			};
 			localStorageService.add('task_'+index, JSON.stringify(todo));
 		}
+
+
+		$scope.clear = function(index){
+			if(index === 0 || index ){
+				// supprimer uniquement l'élémént d'indice index
+				var todo = todos.splice(index, 1);
+				var nb_tasks = parseInt(localStorageService.get('nb_tasks'));
+				for(var i = index + 1; i<nb_tasks; i++){
+					var t_i = localStorageService.get('task_'+i);
+					localStorageService.add('task_'+(i-1), t_i);
+				}
+				localStorageService.remove('task_'+(nb_tasks-1));
+				localStorageService.add('nb_tasks', nb_tasks-1);
+
+			}else{
+				// Tout effacer
+				localStorageService.clearAll();
+				localStorageService.add('nb_tasks', 0);
+				todos.length = 0;
+			}
+		}
 	}
 ]);
+
+
+function validate(event, keyEvent){
+	if(keyEvent.keyCode === 13){
+		event.targetScope.$broadcast('todo:validate')
+	}
+}
 
 
 // Controller qui permet de gérer l'édition d'une tache
@@ -70,6 +98,11 @@ TodoControllers.controller('EditTodoCtrl', ['$scope', '$routeParams', '$location
 			}
 		}
 
+		$scope.$on('todo:keyup', validate);
+		$scope.$on('todo:validate', function(event){
+			$scope.editTodo($scope.title, $scope.description);
+		})
+
 	}
 ]);
 
@@ -92,6 +125,11 @@ TodoControllers.controller('NewTodoCtrl', ['$scope', '$location',  'localStorage
 				alert("Le titre ne doit pas être vide !");
 			}
 		}
+
+		$scope.$on('todo:keyup', validate);
+		$scope.$on('todo:validate', function(event){
+			$scope.addNewTodo($scope.title, $scope.description);
+		})
 		
 	}
 ]);
