@@ -5,7 +5,7 @@
 <ul class="main">
 	<li ng-repeat="todo in todos">
 		<input type="checkbox" ng-model="todo.done" ng-click='setDone($index)'>
-		<span class="{{todo.done | checked}}"> <a href="#/todos/{{$index}}">{{ todo.title }} </a></span>
+		<span class="{{todo.done | checked}}"> <a href="#/todos/{{$index}}" title="{{todo.description}}">{{ todo.title }} </a></span>
 		<button ng-click="clear($index)">X</button>
 	</li>
 </ul>

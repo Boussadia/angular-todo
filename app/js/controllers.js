@@ -8,23 +8,27 @@ var TodoControllers = angular.module('TodoControllers', []);
 // Variable globale qui contient nos taches
 var todos = [];
 
+function __init__(localStorageService){
+	var nb_tasks = localStorageService.get('nb_tasks') || "0";
+	nb_tasks = parseInt(nb_tasks);
+	if(nb_tasks !== todos.length){
+
+		for(var i = 0; i < nb_tasks; i++){
+			var task = JSON.parse(localStorageService.get('task_'+i));
+			todos.push(task);
+		}
+	}
+	
+	localStorageService.add('nb_tasks', nb_tasks);
+
+}
+
 
 // Premier controller qui s'occupe de gérer la page principale
 TodoControllers.controller('MainCtrl', ['$scope', 'localStorageService',
 	function MainCtrl($scope,localStorageService){
 		$scope.todos = todos;
-		var nb_tasks = localStorageService.get('nb_tasks') || "0";
-		nb_tasks = parseInt(nb_tasks);
-		
-		if(nb_tasks !== todos.length){
-
-			for(var i = 0; i < nb_tasks; i++){
-				var task = JSON.parse(localStorageService.get('task_'+i));
-				todos.push(task);
-			}
-		}
-		
-		localStorageService.add('nb_tasks', nb_tasks);
+		__init__(localStorageService);
 
 
 		$scope.setDone = function(index){
@@ -73,6 +77,7 @@ TodoControllers.controller('EditTodoCtrl', ['$scope', '$routeParams', '$location
 	function EditTodoCtrl($scope, $routeParams, $location,localStorageService){
 		var todoId = $routeParams.todoId;
 		$scope.state = "edit";
+		__init__(localStorageService);
 
 		if(todoId<todos.length){
 			$scope.title = todos[todoId].title;
