@@ -5,7 +5,8 @@ var TodoListApp = angular.module('TodoListApp', [
 	'ngRoute',
 	'TodoControllers',
 	'todoListFilter',
-	'LocalStorageModule'
+	'LocalStorageModule',
+	'ui.bootstrap'
 ]);
 
 

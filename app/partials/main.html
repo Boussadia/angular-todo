@@ -1,16 +1,42 @@
 <!-- Template principal de l'application -->
 
-<h2>Ma Todo</h2>
-<div id="filter">
-	<label>Filtrer : </label>
-	<input type="search" ng-model="query">
+<div class="row">
+	<h2 class="text-center"> Ma Todo</h2>
 </div>
-<button ng-click="clear()"> Vider la liste</button>
+
+<form class="form-inline row" role="form">
+	<div id="filter" class="form-group">
+		<label for="search-input" class="col-sm-2 control-label">Filtrer: </label>
+		<div class="col-sm-10">
+			<input id="search-input" type="search" ng-model="query" class="form-control">
+		</div>
+		
+	</div>
+</form>
+
+<div class="row">
+	<div class="col-xs-6 text-center"><button ng-click="clear()" class="btn btn-danger"> Vider la liste</button></div>
+	<div class="col-xs-6 text-center"><a href="#/todos/new" class="btn btn-primary">New Todo</a></div>
+</div>
+
+
 <ul class="main">
 	<li ng-repeat="todo in todos | filter:query">
-		<input type="checkbox" ng-model="todo.done" ng-click='setDone($index)'>
-		<span class="{{todo.done | checked}}"> <a href="#/todos/{{$index}}" title="{{todo.description}}">{{ todo.title }} </a></span>
-		<button ng-click="clear($index)">X</button>
+		<div class="row">
+			<div class="col-md-1 col-xs-1">
+				<input type="checkbox" ng-model="todo.done" ng-click='setDone($index)'>
+			</div>
+			
+			<div class="col-md-10 col-xs-8">
+				<span class="{{todo.done | checked}}"> <a href="#/todos/{{$index}}" title="{{todo.description}}">{{ todo.title }} </a></span>
+			</div>
+			
+			<div class="col-md-1 col-xs-1">
+				<button ng-click="clear($index)" type="button" class="close" aria-hidden="true">&times;</button>
+			</div>
+
+		</div>
+		
+		
 	</li>
 </ul>
-<a href="#/todos/new">New Todo</a>

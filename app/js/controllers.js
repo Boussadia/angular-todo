@@ -2,7 +2,7 @@
 
 
 // Instanciation de notre module qui contient tous les controllers
-var TodoControllers = angular.module('TodoControllers', []);
+var TodoControllers = angular.module('TodoControllers', ['ui.bootstrap']);
 
 
 // Variable globale qui contient nos taches
@@ -138,3 +138,9 @@ TodoControllers.controller('NewTodoCtrl', ['$scope', '$location',  'localStorage
 		
 	}
 ]);
+
+TodoControllers.controller('NavCtrl', ['$scope',
+	function($scope){
+
+	}
+])
