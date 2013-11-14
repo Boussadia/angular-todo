@@ -1,11 +1,17 @@
 <!-- Ecran pour une tache -->
 
-<input id="title" class="form-control" type="text" ng-model="title" size="30" placeholder="Titre de la todo" ng-keyup="$broadcast('todo:keyup', $event)">
-<textarea id="description" class="form-control" ng-model="description" cols="30" rows="10" placeholder="Description" ng-keyup="$broadcast('todo:keyup', $event)"></textarea>
+<form role="form">
+	<div class="form-group">
+		<input id="title" class="form-control" type="text" ng-model="title" size="30" placeholder="Titre de la todo" ng-keyup="$broadcast('todo:keyup', $event)">
+	</div>
+	<div class="form-group">
+		<textarea id="description" class="form-control" ng-model="description" cols="30" rows="10" placeholder="Description" ng-keyup="$broadcast('todo:keyup', $event)"></textarea>
+	</div>
+</form>
 <!-- On affiche un bouton différent en fonction de l'url de la page -->
 <div class="row">
-	<div class="col-xs-6 text-center"><button ng-click="addNewTodo(title, description)" ng-if="state==='new'" class="btn btn-success"> Ajouter</button></div>
-	<div class="col-xs-6 text-center"><button ng-click="editTodo(title, description)" ng-if="state!=='new'" class="btn btn-success"> Enregistrer</button></div>
-	<div class="col-xs-6 text-center"><a href="#/"  class="btn btn-primary"> Acceuil</a></div>
+	<div class="col-xs-6 text-center" ng-show="{{state==='new'}}"><button ng-click="addNewTodo(title, description)" class="btn btn-success"> Ajouter</button></div>
+	<div class="col-xs-6 text-center" ng-hide="{{state==='new'}}"><button ng-click="editTodo(title, description)" class="btn btn-success"> Enregistrer</button></div>
+	<div class="col-xs-5 text-center"><a href="#/"  class="btn btn-primary"> Acceuil</a></div>
 </div>
 
