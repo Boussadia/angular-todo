@@ -15,9 +15,9 @@ var TodoListApp = angular.module('TodoListApp', [
 TodoListApp.config(['$routeProvider',
 	function($routeProvider){
 		$routeProvider
-			.when('/todos', { templateUrl: 'partials/main.html', controller: 'MainCtrl'})
-			.when('/todos/new', {templateUrl: 'partials/todo.html', controller: 'NewTodoCtrl'})
-			.when('/todos/:todoId', {templateUrl: 'partials/todo.html', controller: 'EditTodoCtrl'})
+			.when('/todos', { templateUrl: 'partials/main.html', controller: 'MainCtrl', event:{route:"main"}})
+			.when('/todos/new', {templateUrl: 'partials/todo.html', controller: 'NewTodoCtrl', event:{route:"new"}})
+			.when('/todos/:todoId', {templateUrl: 'partials/todo.html', controller: 'EditTodoCtrl', event:{route:"edit"}})
 			.otherwise({
 				redirectTo: '/todos'
 			});

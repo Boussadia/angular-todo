@@ -94,8 +94,17 @@ TodoControllers.controller('NewTodoCtrl', ['$scope', '$location', 'storage',
 	}
 ]);
 
-TodoControllers.controller('NavCtrl', ['$scope',
-	function($scope){
-
+TodoControllers.controller('NavCtrl', ['$scope', '$route',
+	function($scope, $route){
+		$scope.route={name:''};
+		
+		$scope.$on('$routeChangeSuccess', function(event, current, previous){
+			if($route.current.event){
+				$scope.route.name = $route.current.event.route;
+			}else{
+				$scope.route.name = "";
+			}
+			
+		})
 	}
 ])
