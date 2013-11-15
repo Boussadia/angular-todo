@@ -7,8 +7,6 @@ angular.module('TodoServices', ['LocalStorageModule'], function($provide){
 			todos: [],
 			add: function(todo, index){
 				this.init();
-				console.log(index);
-				console.log(todo);
 				if(index === 0 || index ){
 					this.todos[index] = todo;
 				}else{

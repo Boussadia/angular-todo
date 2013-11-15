@@ -6,13 +6,17 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+		<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+
 		<!-- Bibliothéque dont nous avons besoin -->
 		<script src="lib/angular/angular.js"></script>
 		<script src="lib/angular/angular-route.js"></script>
+		<script src="lib/angular/angular-animate.js"></script>
 		<script src="lib/vendors/localStorageModule.js"></script>
 		<script src="lib/ui-boostrap/ui-bootstrap-tpls-0.7.0-SNAPSHOT.js"></script>
 
 		<!-- Notre code applicatif -->
+		<script src="js/animation.js"></script>
 		<script src="js/services.js"></script>
 		<script src="js/controllers.js"></script>
 		<script src="js/filters.js"></script>
@@ -22,6 +26,7 @@
 		<!-- Style de la page -->
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/app.css">
+		<link rel="stylesheet" type="text/css" href="css/animation.css">
 	</head>
 	<body ng-cloak>
 		<nav class="navbar navbar-default" role="navigation" ng-controller="NavCtrl">
@@ -44,7 +49,9 @@
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</nav>
-	
-		<div class="container" ng-view></div>
+
+		<div class="view-container">
+			<div class="container view-frame" ng-view></div>
+		</div>
 	</body>
 </html>
