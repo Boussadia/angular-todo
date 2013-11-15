@@ -5,6 +5,7 @@ module.exports = function(config){
     files : [
       'app/lib/angular/angular.js',
       'app/lib/angular/angular-*.js',
+      'app/lib/*/*.js',
       'test/lib/angular/angular-mocks.js',
       'app/js/**/*.js',
       'test/unit/**/*.js'
@@ -19,7 +20,7 @@ module.exports = function(config){
 
     frameworks: ['jasmine'],
 
-    browsers : ['Chrome'],
+    browsers : ['Chrome', 'Firefox'],
 
     plugins : [
             'karma-junit-reporter',

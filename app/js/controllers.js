@@ -2,7 +2,11 @@
 
 
 // Instanciation de notre module qui contient tous les controllers
-var TodoControllers = angular.module('TodoControllers', ['ui.bootstrap']);
+var TodoControllers = angular.module('TodoControllers', [
+	'ui.bootstrap',
+	'TodoServices',
+	'todoListFilter'
+]);
 
 // Premier controller qui s'occupe de gérer la page principale
 TodoControllers.controller('MainCtrl', ['$scope', 'storage',
