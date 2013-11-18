@@ -3,7 +3,9 @@
 // Initialisation d'une application Angular avec les dépendances dont nous avons besoin
 var TodoListApp = angular.module('TodoListApp', [
 	'ngRoute',
-	'TodosAnimations'
+	'TodosAnimations',
+	'todoListFilter',
+	'TodoControllers'
 ]);
 
 
