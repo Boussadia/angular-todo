@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('TodoServices', ['LocalStorageModule'], function($provide){
+angular.module('TodoServices', ['LocalStorageModule'], ['$provide', function($provide){
 	var todos = [];
 	$provide.factory('storage', ['localStorageService', function(localStorageService){
 		return {
@@ -60,4 +60,4 @@ angular.module('TodoServices', ['LocalStorageModule'], function($provide){
 			}
 		}
 	}]);
-})
+}])
